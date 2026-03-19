@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jio Stream</title>
+</head>
+<body style="font-family:sans-serif; text-align:center;">
+    <h3>Video Upload</h3>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="video" accept="video/*">
+        <button type="submit">Upload</button>
+    </form>
+    <hr>
+    <h3>All Videos</h3>
+    <% videos.forEach(video => { %>
+        <div style="margin-bottom:20px;">
+            <a href="<%= video.secure_url.replace('.mp4', '.3gp') %>" 
+               style="background:blue; color:white; padding:10px; display:block; text-decoration:none;">
+               Play in Jio Bharat (3GP)
+            </a>
+            <p>Size: <%= (video.bytes / 1024 / 1024).toFixed(2) %> MB</p>
+        </div>
+    <% }) %>
+</body>
+</html>
